@@ -59,7 +59,7 @@ router.post('/', [auth, role], async (req, res) => {
             }
         });
 
-    const urlSlug = slugify(req.body.slug);
+    const urlSlug = slugify(req.body.slug ? req.body.slug : req.body.title);
     const slug = await Post.findOne({ slug: urlSlug });
     if (slug)
         return res.status(400).send({
@@ -101,8 +101,18 @@ router.post('/', [auth, role], async (req, res) => {
     });
 
     await post.save();
-    res.send(_.pick(post, ['title', 'slug', 'createDate']));
-    // res.send(author);
+    res.send({
+        message: 'success',
+        data: _.pick(post, [
+            '_id',
+            'title',
+            'slug',
+            'author',
+            'category',
+            'createDate',
+            'publishDate'
+        ])
+    });
 });
 
 router.get('/:slug', async (req, res) => {

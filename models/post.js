@@ -7,14 +7,14 @@ const postSchema = new mongoose.Schema({
     title: {
         type: String,
         minlength: 5,
-        maxlength: 50,
+        maxlength: 255,
         required: true,
         trim: true
     },
     slug: {
         type: String,
         minlength: 5,
-        maxlength: 50,
+        maxlength: 255,
         required: true,
         trim: true,
         unique: true,
@@ -51,13 +51,12 @@ const validatePost = post => {
     const schema = {
         title: Joi.string()
             .min(5)
-            .max(50)
+            .max(255)
             .required()
             .trim(),
         slug: Joi.string()
             .min(5)
-            .max(100)
-            .required()
+            .max(255)
             .trim(),
         authorId: Joi.objectId().required(),
         categoryId: Joi.objectId().required(),
