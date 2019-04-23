@@ -56,5 +56,6 @@ Request Body    :
     }
 }
 </code></pre>
+<p>Wiki: <a href="https://github.com/brothergiez/expressAPI/wiki">https://github.com/brothergiez/expressAPI/wiki</a></p>
 <h2><a id="License_77"></a>License</h2>
 <p>MIT</p>
