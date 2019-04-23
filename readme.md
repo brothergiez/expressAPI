@@ -13,12 +13,13 @@ export cms_jwtPrivateKey=your_private_key
 <br><br>
 How to use:<br>
 First you need Login to get token.<br>
-<code>
+<br>
 Method: GET<br>
 endpoint: http://localhost:5000/api/auth<br>
 body request (application/json):<br>
-{<br>
-email: brtgz.id@gmail.com,<br>
-password: 1234567<br>
-}<br>
+<code>
+{
+email: brtgz.id@gmail.com,
+password: 1234567
+}
 </code>
