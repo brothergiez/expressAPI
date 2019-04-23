@@ -33,7 +33,7 @@ $ npm install
 <pre><code class="language-sh">$ nodemon index.js
 </code></pre>
 <p>In this mini project, if you wanna create new user you must have token because I assume the addition of a new user must be done by an administrator who has authorization.</p>
-<h4><a id="Login_49"></a>Login</h4>
+<h4><a id="Login_49"></a>Login For Administrator</h4>
 <pre><code>Method          : POST
 Endpoint        : http://localhost:5000/api/auth
 Content-Type    : application/json
