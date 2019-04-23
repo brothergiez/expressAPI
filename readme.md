@@ -1,6 +1,6 @@
 <h1><a id="Simple_REST_API_build_with_Express_0"></a>Simple REST API build with Express</h1>
 <p>This repo was made for learning purposes to make Rest API simple using the Express JS framework.</p>
-<p>In this mini project there are several examples of the needs needed to create a simple REST API.</p>
+<p>In this mini project there are several examples needed to make a simple REST API.</p>
 <ul>
 <li>Make routing on express</li>
 <li>Using the MongoDB database</li>
