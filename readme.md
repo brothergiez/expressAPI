@@ -1,25 +1,24 @@
 Clone this repo and run :
-
+<br>
 <code>
 npm install
 </code>
-
-
+<br><br>
 after that, set for JWT Signature Key on terminal
 
-
+<br>
 <code>
 export cms_jwtPrivateKey=your_private_key
 </code>
-
+<br><br>
 How to use:
 First you need Login to get token.
 <code>
-Method: GET
-endpoint: http://localhost:5000/api/auth
-body request (application/json):
-{
-email: brtgz.id@gmail.com,
-password: 1234567
-}
+Method: GET<br>
+endpoint: http://localhost:5000/api/auth<br>
+body request (application/json):<br>
+{<br>
+email: brtgz.id@gmail.com,<br>
+password: 1234567<br>
+}<br>
 </code>
