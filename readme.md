@@ -33,7 +33,8 @@ $ npm install
 <pre><code class="language-sh">$ nodemon index.js
 </code></pre>
 <p>In this mini project, if you wanna create new user you must have token because I assume the addition of a new user must be done by an administrator who has authorization.</p>
-<pre><code>Method          : GET
+<h4><a id="Login_49"></a>Login</h4>
+<pre><code>Method          : POST
 Endpoint        : http://localhost:5000/api/auth
 Content-Type    : application/json
 Request Body    :
@@ -41,20 +42,19 @@ Request Body    :
     &quot;email&quot;:&quot;brtgz.id@gmail.com&quot;,
     &quot;password&quot;:&quot;1234567&quot;
 }
-
-Response if true:
-{
-&quot;message&quot; : &quot;Login success&quot;,
-&quot;token&quot; : &quot;your-token&quot;
-}
-
-Response if false:
-{
-&quot;error&quot;: {
-&quot;message&quot;: &quot;Email/Password not valid&quot;
-}
+</code></pre>
+<h4><a id="Response_if_true_61"></a>Response if true:</h4>
+<pre><code>{
+    &quot;message&quot;   : &quot;Login success&quot;,
+    &quot;token&quot;     : &quot;your-token&quot;
 }
 </code></pre>
-
-<h2><a id="License_72"></a>License</h2>
+<h4><a id="Response_if_false_68"></a>Response if false:</h4>
+<pre><code>{
+    &quot;error&quot;: {
+        &quot;message&quot;: &quot;Email/Password not valid&quot;
+    }
+}
+</code></pre>
+<h2><a id="License_77"></a>License</h2>
 <p>MIT</p>
