@@ -11,8 +11,8 @@ after that, set for JWT Signature Key on terminal
 export cms_jwtPrivateKey=your_private_key
 </code>
 <br><br>
-How to use:
-First you need Login to get token.
+How to use:<br>
+First you need Login to get token.<br>
 <code>
 Method: GET<br>
 endpoint: http://localhost:5000/api/auth<br>
