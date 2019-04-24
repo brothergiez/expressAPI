@@ -15,6 +15,11 @@
 <li>Protect routes with authentication and authorization</li>
 <li>and several other library uses can be seen in package.json</li>
 </ul>
+<h3><a id="Requirement_23"></a>Requirement</h3>
+<ul>
+    <li>Node.js & NPM (latest version)</li>
+    <li>MongoDB</li>
+</ul>
 <h3><a id="Installation_18"></a>Installation</h3>
 <p>Clone this repo</p>
 <pre><code class="language-sh">$ git <span class="hljs-built_in">clone</span> https://github.com/brothergiez/expressAPI.git
