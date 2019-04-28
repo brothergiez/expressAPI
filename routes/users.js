@@ -12,7 +12,7 @@ const router = express.Router();
 //requirement token
 router.get('/me', auth, async (req, res) => {
     const user = await User.findById(req.user._id).select('-password -__v');
-    res.send(user);
+    res.send({ message: 'success', data: user });
 });
 
 //UPDATE/EDIT CURRENT USER BASED ON TOKEN
@@ -114,7 +114,8 @@ router.post('/', [auth, role], async (req, res) => {
             'email',
             'password',
             'isAdmin',
-            'isActive'
+            'isActive',
+            'avatar'
         ])
     );
 
@@ -131,7 +132,8 @@ router.post('/', [auth, role], async (req, res) => {
             'last_name',
             'email',
             'isAdmin',
-            'isActive'
+            'isActive',
+            'avatar'
         ])
     );
 });
@@ -149,7 +151,7 @@ router.get('/:id', [auth, role], async (req, res) => {
                     message: 'The user with the given ID was not found'
                 }
             });
-        res.send(user);
+        res.send({ message: 'success', data: user });
     } else {
         return res.status(400).send({
             error: {
@@ -195,6 +197,27 @@ router.put('/:id', [auth, role], async (req, res) => {
             }
         });
     }
+});
+
+router.patch('/:id', [auth, role], async (req, res) => {
+    const fieldToPatch = Object.keys(req.body);
+    const { error } = validate(req.body, fieldToPatch);
+
+    if (error) return res.status(400).send(error.details[0].message);
+
+    const user = await User.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+    ).select('-password -__v');
+    if (!user)
+        return res.status(400).send({
+            error: {
+                message: 'The user with the given ID was not found'
+            }
+        });
+    res.send({ message: 'success', data: user });
+    // res.send(fieldToPatch);
 });
 
 //DELETE USER

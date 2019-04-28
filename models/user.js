@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
         maxlength: 30,
-        minlength: 2
+        minlength: 1
     },
     email: {
         type: String,
@@ -36,6 +36,14 @@ const userSchema = new mongoose.Schema({
     isActive: {
         type: Boolean,
         default: true
+    },
+    lastLogin: {
+        type: Date
+    },
+    avatar: {
+        type: String,
+        minlength: 5,
+        maxlength: 255
     }
 });
 
@@ -60,8 +68,8 @@ userSchema.methods.generateAuthToken = function() {
 
 const User = mongoose.model('User', userSchema);
 
-const validateUser = user => {
-    const schema = {
+function validateUser(user, field = null) {
+    const joiSchema = {
         first_name: Joi.string()
             .min(2)
             .max(30)
@@ -80,11 +88,26 @@ const validateUser = user => {
             .max(1024)
             .required(),
         isAdmin: Joi.boolean(),
-        isActive: Joi.boolean()
+        isActive: Joi.boolean(),
+        lastLogin: Joi.date(),
+        avatar: Joi.string()
     };
-    return Joi.validate(user, schema);
-};
+
+    if (!field) {
+        return Joi.validate(user, joiSchema);
+    } else {
+        const dynamicSchema = Object.keys(joiSchema)
+            .filter(key => field.includes(key))
+            .reduce((obj, key) => {
+                obj[key] = joiSchema[key];
+                return obj;
+            }, {});
+
+        return Joi.validate(user, dynamicSchema);
+    }
+}
 
 exports.User = User;
 exports.validate = validateUser;
 exports.authorSchema = authorSchema;
+exports.userSchema = userSchema;
